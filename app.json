@@ -31,5 +31,6 @@
       "iconPath": "assets/my.png",
       "selectedIconPath": "assets/my2.png"
     }]
-  }
+  },
+  "debug": true
 }

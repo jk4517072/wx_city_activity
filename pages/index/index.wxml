@@ -1,8 +1,8 @@
 <view class='main-wraper'>
-    <navBar background='#000000' color='#fff' iconTheme='white' bindback="handlerGobackClick" bindhome="handlerGohomeClick">
+    <navBar background='#5794efb5' color='#fff' iconTheme='white' bindback="handlerGobackClick" bindhome="handlerGohomeClick">
         <view class='location' slot="left">
-            <view class='con'>上海</view>
-            <view class='icon' />
+            <view class='con'>杭州市</view>
+            <view class='icon'/>
         </view>
         <view class='lxy-nav-bar-search' slot="center">
             <view class='lxy-nav-bar-search__icon' />
