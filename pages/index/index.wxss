@@ -1,0 +1,7 @@
+/**index.wxss**/
+.flex-item-V{
+  margin: 0 auto;
+  width: 150px;
+  height: 100px;
+  background-color: aqua;
+}
