@@ -1,2 +1,5 @@
 <!--pages/news/news.wxml-->
 <text>pages/news/news.wxml</text>
+<view class="touchpannel" bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd' >
+	<slot></slot>
+</view>

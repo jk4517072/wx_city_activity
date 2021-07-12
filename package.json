@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "coolui-scroller": "^2.0.2",
     "weui-miniprogram": "^1.0.8"
   }
 }

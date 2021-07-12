@@ -14,32 +14,49 @@
             </view>
         </view>
     </navBar>
-    <view class='main'>
-        <view class="main-page-section">
-      <view class="main-page-section-spacing">
-        <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll">
-          <view  class="scroll-view-item_H demo-text">热点</view>
-          <view  class="scroll-view-item_H demo-text">推荐</view>
-          <view  class="scroll-view-item_H demo-text">户外</view>
-          <view   class="scroll-view-item_H demo-text">桌游</view>
-          <view  class="scroll-view-item_H demo-text">运动</view>
-          <view  class="scroll-view-item_H demo-text">文艺</view>   
-          <view   class="scroll-view-item_H demo-text">桌游</view>
-          <view  class="scroll-view-item_H demo-text">运动</view>
-          <view  class="scroll-view-item_H demo-text">文艺</view>        
-        </scroll-view>
-      </view>
-    </view>
-         <view class="main-page-section main-page-section-spacing swiper">
-                <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}"
-                    duration="{{duration}}">
-                    <block wx:for="{{background}}" wx:key="*this">
-                        <swiper-item>
-                            <view class="swiper-item {{item}}"></view>
-                        </swiper-item>
-                    </block>
-                </swiper>
+    <view class="tab">
+        <scroll-view scroll-x="true" class="xscroll_bar" enable-flex="true">
+            <view class="menu_item {{index==activeIndex?'active':''}}" style="width:{{itemWidth}};" wx:for="{{menus}}"
+                wx:key="a" bindtap="tabChange" data-index="{{index}}">
+                <view>
+                    {{item.menu}}{{index+1}}
+                </view>
             </view>
+        </scroll-view>
+    </view>
+    <view class='swiper-panel'>
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}"
+            duration="{{duration}}" >
+            <block wx:for="{{background}}" wx:key="*this">
+                <swiper-item>
+                    <view class="swiper-item {{item}}"></view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+</view>
+
+<view class="wx-panel" enable-flex="true">
+<view class="wx-panel body" >
+    <view class="wx-panel image">
+        <image src="https://myimage-1302132175.cos.ap-shanghai.myqcloud.com/activity/1625821306809.jpg?imageMogr2/thumbnail/240x260/pad/1/" mode="scaleToFill"></image>
+    </view>
+    <view class="content">
+        <view class="content-text" >
+            <text style="font-size: 40rpx">夏天玩水活动</text>
+        </view>
+        <view class="content-text">
+            <image style=" width: 60rpx;height: 60rpx;" src="../../assets/time.png"></image>
+            <text class="content-text" style="margin-left: 10px;">7月25日 14:00</text>
+        </view>
+        <view class="content-text">
+            <image style=" width: 60rpx;height: 60rpx;" src="../../assets/address.png"></image>
+            <text class="content-text" style="margin-left: 10px;">滨江区滨江图书馆</text>
+        </view>
+        <view class="content-text">
+            <image style=" width: 60rpx;height: 60rpx;" src="../../assets/peoper.png"></image>
+            <text class="content-text" style="margin-left: 10px;">8/16人</text>
         </view>
     </view>
-   
+</view>
+</view>

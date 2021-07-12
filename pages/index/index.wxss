@@ -1,51 +1,96 @@
 /**index.wxss**/
-.flex-item-V{
-  margin: 0 auto;
-  width: 150px;
-  height: 100px;
-  background-color: aqua;
-}
-.con{
-  font-size: 16px;
-}
-
-.main{
-  height: 330rpx;
+.swiper-panel{
+  height: 260rpx;
   width: 750rpx;
   /* background: -webkit-linear-gradient(top,skyblue,lightblue,white); */
   background-color: skyblue;
 }
+
 swiper{
   width: 700rpx;
-  height: 270rpx;
+  height: 260rpx;
   background-color: red;
   margin-left: 25rpx;
   border-radius: 25px;  
 }
 
-.scroll-view_H{
+.xscroll_bar {
+  overflow-y: hidden;
+  height: 60rpx;
+  line-height: 60rpx;
   white-space: nowrap;
-}
-.scroll-view-item{
-  height: 50rpx;
-}
-.scroll-view-item_H{
-  display: inline-block;
-  width: 100%;
-  height: 55rpx;
+  display: flex;
+  background: skyblue;
 }
 
-.demo-text{
-  margin-left: 20px;
-  position: relative;
-  width: 40px;
-  align-items: center;
-  justify-content: center;
-  color: #F1F1F1;
-
+.menu_item {
   text-align: center;
-  font-size: 14px;
-  font-weight: bold;
-  vertical-align: middle;
-  display: table-cell;
+  font-size: 30rpx;
+  color: #7c7c7c;
+  display: inline-block;
+}
+
+/*目前暂时不支持伪类，边距的去除只能动态判断*/
+.xscroll_bar .active {
+  color: #1f1f1f;
+  background: #fff;
+}
+
+mdeia-image{
+  width: 5px;height: 5px;
+}
+
+.wx-panel{
+  background-color: rebeccapurple;
+  width: 750rpx;
+  height: 360rpx;
+  overflow: hidden;
+}
+.wx-panel .body{
+  background-color: red;
+  width: 700rpx;
+  height: 300rpx;
+  border-radius: 25px;
+  margin-left: 25rpx;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+}
+
+.wx-panel  .image{
+  width: 240rpx;
+  height: 260rpx; 
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  background-color: white;
+}
+
+.wx-panel .body image{
+  width: 240rpx;
+  height: 260rpx;
+  margin-bottom: 10px;
+}
+
+.content{
+  background-color: aqua;
+  width: 400rpx;
+  height: 260rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-text{
+  background-color: beige;
+  width: 400rpx;
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.content-text .image{
+  width: 40rpx; 
+  height: 60rpx;
+  margin-left: 10px;
 }

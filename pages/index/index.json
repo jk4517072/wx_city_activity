@@ -5,6 +5,9 @@
   "backgroundColorTop": "#00000",
   "backgroundColorBottom": "#f8f8f8",
   "usingComponents": {
-    "navBar": "../../components/navBar/navBar"
+    "navBar": "../../components/navBar/navBar",
+    "coolui-scroll": "coolui-scroller/index",
+    "coolui-tabs": "../../dist/tabs/index",
+    "coolui-tab": "../../dist/tab/index"
   }
 }
