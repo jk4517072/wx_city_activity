@@ -2,7 +2,14 @@
 // 获取应用实例
 const app = getApp()
 Page({
-  data: {},
+  data: {
+    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: false,
+    interval: 2000,
+    duration: 500
+  },
   handlerGobackClick(delta) {
     const pages = getCurrentPages();
     if (pages.length >= 2) {
@@ -20,7 +27,9 @@ Page({
       url: '../logs/logs'
     })
   },
-
+  onPulling(e) {
+    console.log('onPulling:', e)
+  }
   // getUserProfile(e) {
   // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
   // },
