@@ -2,7 +2,7 @@
     <navBar background='skyblue' color='#fff' iconTheme='white' bindback="handlerGobackClick"
         bindhome="handlerGohomeClick">
         <view class='location' slot="left">
-            <view class='con'>杭州</view>
+            <navigator class='con' url="../switchcity/switchcity">{{addressinfo.location}}</navigator>
             <view class='icon' />
         </view>
         <view class='lxy-nav-bar-search' slot="center">
