@@ -11,6 +11,9 @@
     "navigationBarTitleText": "Weixin",
     "navigationBarTextStyle":"black"
   },
+  "usingComponents": {
+    "coolui-scroll": "coolui-scroller/scroll/index"
+  },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "tabBar": {
@@ -35,5 +38,6 @@
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
-  }
+  },
+  "debug": true
 }
