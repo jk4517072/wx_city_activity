@@ -26,7 +26,7 @@
     </view>
     <view class='swiper-panel'>
         <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}"
-            duration="{{duration}}" >
+            duration="{{duration}}">
             <block wx:for="{{background}}" wx:key="*this">
                 <swiper-item>
                     <view class="swiper-item {{item}}"></view>
@@ -37,26 +37,29 @@
 </view>
 
 <view class="wx-panel" enable-flex="true">
-<view class="wx-panel body" >
-    <view class="wx-panel image">
-        <image src="https://myimage-1302132175.cos.ap-shanghai.myqcloud.com/activity/1625821306809.jpg?imageMogr2/thumbnail/240x260/pad/1/" mode="scaleToFill"></image>
-    </view>
-    <view class="content">
-        <view class="content-text" >
-            <text style="font-size: 40rpx">夏天玩水活动</text>
-        </view>
-        <view class="content-text">
-            <image style=" width: 60rpx;height: 60rpx;" src="../../assets/time.png"></image>
-            <text class="content-text" style="margin-left: 10px;">7月25日 14:00</text>
-        </view>
-        <view class="content-text">
-            <image style=" width: 60rpx;height: 60rpx;" src="../../assets/address.png"></image>
-            <text class="content-text" style="margin-left: 10px;">滨江区滨江图书馆</text>
-        </view>
-        <view class="content-text">
-            <image style=" width: 60rpx;height: 60rpx;" src="../../assets/peoper.png"></image>
-            <text class="content-text" style="margin-left: 10px;">8/16人</text>
-        </view>
-    </view>
-</view>
-</view>
+                <view class="wx-panel body">
+                    <view class="wx-panel image">
+                        <image
+                            src="https://myimage-1302132175.cos.ap-shanghai.myqcloud.com/activity/1625821306809.jpg?imageMogr2/thumbnail/240x260/pad/1/"
+                            mode="scaleToFill"></image>
+                    </view>
+                    <view class="content">
+                        <view class="content-text">
+                            <text style="font-size: 40rpx">{{item.title}}</text>
+                        </view>
+                        <view class="content-text">
+                            <image style=" width: 60rpx;height: 60rpx;" src="../../assets/time.png"></image>
+                            <text class="content-text" style="margin-left: 10px;">{{item.starttime}}</text>
+                        </view>
+                        <view class="content-text">
+                            <image style=" width: 60rpx;height: 60rpx;" src="../../assets/address.png"></image>
+                            <text class="content-text" style="margin-left: 10px;">{{item.address}}</text>
+                        </view>
+                        <view class="content-text">
+                            <image style=" width: 60rpx;height: 60rpx;" src="../../assets/peoper.png"></image>
+                            <text class="content-text" style="margin-left: 10px;">8/16人</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        

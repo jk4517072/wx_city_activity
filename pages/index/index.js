@@ -84,8 +84,6 @@ Page({
       latitude: ''
     }
   },
-
-
   // 事件处理函数
   bindViewTap() {
     wx.navigateTo({
@@ -99,13 +97,15 @@ Page({
       active: e.detail.index
     })
   },
+
   onShow: function () {
     const {
       globalData: {
-        defaultCity
+        defaultCity,
+        latitude,
+        longitude
       }
     } = appInstance
-    console.log("aaa" + defaultCity);
     // 页面显示
     var span = wx.getSystemInfoSync().windowWidth / this.data.menus.length + 'px';
     this.setData({
@@ -130,19 +130,94 @@ Page({
       }
     })
     if (defaultCity === "加载中..") {
-      this.getLocation();
+      var that = this;
+      wx.getLocation({
+        type: 'wgs84',
+        success(res) {
+          const {
+            latitude,
+            longitude
+          } = res
+          wx.request({
+            url: getLocationUrl(latitude, longitude),
+            success(res) {
+              const {
+                city,
+                adcode,
+                location
+              } = safeGet(['data', 'result', 'ad_info'], res);
+              that.setData({
+                addressinfo: {
+                  location: city,
+                  longitude: location.lng,
+                  latitude: location.lat
+                }
+              })
+              wx.request({
+                url: 'http://localhost:8082/app/list',
+                data: {
+                  city: defaultCity,
+                  longitude: location.lng,
+                  latitude: location.lat,
+                  acttype: '',
+                  isShow: '1',
+                  currentPage: '0'
+                },
+                header: {
+                  'content-type': 'application/json' // 默认值
+                },
+                success(res) {
+                  console.log(res)
+                  // that.setData({
+                  //   // list: res.data.page.list,
+                  //   // 'scroll.pagination': {
+                  //   //     page: res.data.page.currPage,
+                  //   //     totalPage: res.data.page.totalPage,
+                  //   //     limit: res.data.page.pageSize,
+                  //   //     length: res.data.page.totalCount
+                  //   // }
+                  // }),
+                  // that.selectComponent(".demo1").loadEnd()
+                }
+              })
+            }
+          })
+        },
+      })
     } else {
       this.setData({
         addressinfo: {
           location: defaultCity,
+          longitude: latitude,
+          latitude: longitude
+        }
+      })
+      wx.request({
+        url: 'http://localhost:8082/app/list',
+        data: {
+          city: defaultCity,
           longitude: '',
-          latitude: ''
+          latitude: '',
+          acttype: '',
+          isShow: '1',
+          currentPage: '0'
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success(res) {
+          console.log(res)
+
         }
       })
     }
+
   },
 
-  onReady: function () {
+
+  confirmSearch: function (e) {
+    console.log(e);
+
 
   },
 
@@ -154,40 +229,32 @@ Page({
     });
   },
 
-  getLocation: function () {
-    wx.getLocation({
-      type: 'wgs84',
-      success: res => this.getLocationFromGeoCoord(res),
-      fail: onFail(commonMessage['location.city.fail']),
-    })
+  getData: function (type) {
+    let that = this;
+    // 可走后台接口
+    if (type == 'refresh') {
+      // 刷新时执行
+      // 设置页数1
+      let scroll = that.data.scroll
+      scroll.pagination.page = 1
+    } else {
+      // 加载时执行
+      // 设置页数+1
+      let scroll = that.data.scroll
+      scroll.pagination.page = scroll.pagination.page + 1
+      // 数据加载完隐藏loadmore
+      that.selectComponent(".demo1").loadEnd()
+    }
   },
-  getLocationFromGeoCoord: function (geoCoord) {
-    const {
-      latitude,
-      longitude
-    } = geoCoord
-    wx.request({
-      url: getLocationUrl(latitude, longitude),
-      success: location => this.setCityCounty(location)
-    })
+  // 下拉 刷新 页数设置1
+  refresh: function (e) {
+    this.getData('refresh')
   },
-  setCityCounty: function (e) {
-    const {
-      city,
-      adcode,
-      location
-    } = safeGet(['data', 'result', 'ad_info'], e);
-
-    appInstance.globalData.defaultCity = city;
-    appInstance.globalData.longitude = location.lng;
-    appInstance.globalData.latitude = location.lat;
-    console.log(appInstance.globalData),
-      this.setData({
-        addressinfo: {
-          location: city,
-          longitude: location.lng,
-          latitude: location.lat
-        }
-      })
-  }
+  // 上拉 加载 页数设置+1
+  loadMore: function () {
+    console.log(111);
+    // this.getData('loadMore')
+    that.selectComponent(".demo1").loadEnd()
+  },
+  
 })

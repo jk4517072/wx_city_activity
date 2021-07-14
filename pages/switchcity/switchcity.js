@@ -69,6 +69,8 @@ Page({
       county: ''
     })
     appInstance.globalData.defaultCity = city
+    appInstance.globalData.longitude = '';
+    appInstance.globalData.latitude = '';
     wx.switchTab({ url: getIndexUrl() })
   },
 

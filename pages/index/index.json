@@ -4,9 +4,9 @@
   "backgroundColor": "#f8f8f8",
   "backgroundColorTop": "#00000",
   "backgroundColorBottom": "#f8f8f8",
+  "pageOrientation": "auto",
   "usingComponents": {
     "navBar": "../../components/navBar/navBar",
-    "coolui-scroll": "coolui-scroller/index",
     "coolui-tabs": "../../dist/tabs/index",
     "coolui-tab": "../../dist/tab/index"
   }
